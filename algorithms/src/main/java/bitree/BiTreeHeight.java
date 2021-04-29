@@ -14,12 +14,9 @@ public class BiTreeHeight {
      * 时间复杂度：O(n)  遍历节点
      */
     public static int calcBiTreeHeight(BiTree tree) {
-        int height = 0;
         if (tree != null) {
-            int leftHeight = calcBiTreeHeight(tree.getLeft());
-            int rightHeight = calcBiTreeHeight(tree.getRight());
-            height = Math.max(leftHeight, rightHeight) + 1;
+            return Math.max(calcBiTreeHeight(tree.getLeft()), calcBiTreeHeight(tree.getRight())) + 1;
         }
-        return height;
+        return 0;
     }
 }
