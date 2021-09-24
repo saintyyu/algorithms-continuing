@@ -1,0 +1,28 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/algorithms-continuing.iml
+/checkstyle-idea.xml
+/compiler.xml
+/encodings.xml
+/jarRepositories.xml
+/misc.xml
+/modules.xml
+/vcs.xml
+/algorithms/algorithms.iml
+/.idea/algorithms-continuing.iml
+/.idea/checkstyle-idea.xml
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+
+*.class
