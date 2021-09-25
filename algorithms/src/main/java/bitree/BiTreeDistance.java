@@ -9,6 +9,34 @@ public class BiTreeDistance {
 
 
     /**
+     * https://leetcode-cn.com/problems/diameter-of-binary-tree/
+     * 给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
+     * 注意：两结点之间的路径长度是以它们之间边的数目表示。
+     */
+    public int diameterOfBinaryTree(BiTree root) {
+
+        int diameter = calcLongestBiTreeDistance(root);
+        return diameter == 0 ? diameter : diameter - 1;
+    }
+
+    /**
+     * 这里是计算任意两个节点之间的最长距离
+     * @param biTree
+     * @return
+     */
+    public static int calcLongestBiTreeDistance(BiTree biTree) {
+        if (biTree == null) {
+            return 0;
+        }
+        int distance = Math.max(calcLongestBiTreeDistance(biTree.getRight()), calcLongestBiTreeDistance(biTree.getLeft()));
+        return Math.max(distance,
+                BiTreeHeight.calcBiTreeHeight(biTree.getLeft()) + BiTreeHeight.calcBiTreeHeight(biTree.getRight())) + 1;
+    }
+
+
+    /**
+     *  https://leetcode-cn.com/problems/diameter-of-binary-tree/
+     *  力扣这题和本文的题目有些相似，但不完全一样：力扣题目中，一棵二叉树的直径长度是任意两个结点路径长度中的最大值，本题目是两个叶子节点之间
      *
      * 问题：求二叉树的最大距离(即相距最远的两个叶子节点的路径长度)
      * 分析：求一棵二叉树的最大距离可以分成以下几种情况：
@@ -24,17 +52,11 @@ public class BiTreeDistance {
      * 递归调用其左子树并得到左子树的最大距离temp2，递归调用其右子树并得到右子树的最大距离temp3，返回temp1、temp2和temp3中的最大值。
      * 时间复杂度：O(n)
      */
-    public static int calcLongestDistance(BiTree biTree) {
+    public static int calcLongestLeafDistance(BiTree biTree) {
         if (biTree == null) {
             return 0;
         }
-        if (biTree.getLeft() == null) {
-            return calcLongestDistance(biTree.getRight());
-        }
-        if (biTree.getRight() == null) {
-            return calcLongestDistance(biTree.getLeft());
-        }
-        int distance = Math.max(calcLongestDistance(biTree.getRight()), calcLongestDistance(biTree.getLeft()));
+        int distance = Math.max(calcLongestLeafDistance(biTree.getRight()), calcLongestLeafDistance(biTree.getLeft()));
         return Math.max(distance,
                 BiTreeHeight.calcBiTreeHeight(biTree.getLeft()) + BiTreeHeight.calcBiTreeHeight(biTree.getRight()) +
                         1);
