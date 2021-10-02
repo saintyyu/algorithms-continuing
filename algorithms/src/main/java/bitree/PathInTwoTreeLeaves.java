@@ -37,7 +37,7 @@ public class PathInTwoTreeLeaves {
         if (!getPathFromRootToLeaf(head, leaf1, list1) || !getPathFromRootToLeaf(head, leaf2, list2))
             return null;
 
-        BiTree tmpTree = new BiTree();
+        BiTree tmpTree = null;
         while (list1.peekLast().equals(list2.peekLast())) {
             tmpTree = list1.pollLast();
             list2.pollLast();

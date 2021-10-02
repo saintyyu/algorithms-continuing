@@ -6,8 +6,13 @@ package bitree;
  * @date: 2021/4/18 11:00 下午
  */
 public class BiTree {
-    private BiTree left;
-    private BiTree right;
+    int val;
+    BiTree left;
+    BiTree right;
+
+    public BiTree(int val) {
+        this.val = val;
+    }
 
     public BiTree getLeft() {
         return left;

@@ -5,8 +5,13 @@ package bitree;
  * @author: saintyyu
  * @date: 2021/9/30 10:27 下午
  */
-public class BiTreeNode extends BiTree{
+public class BiTreeNode extends BiTree {
     private BiTreeNode parent;
+
+    public BiTreeNode(int val, BiTreeNode parent) {
+        super(val);
+        this.parent = parent;
+    }
 
     public BiTreeNode getParent() {
         return parent;

@@ -1,5 +1,8 @@
 package str;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * @description:
  * @author: saintyyu
@@ -18,10 +21,11 @@ public class FirstSingleCharInString {
      * 如果为1，则表示String中i位置的字符已经被检测出是重复的，而且所有与该字符相同的字符都已在int数组中被标记为1了。
      *
      * 最大时间复杂度：O(n)
+     * 空间复杂度：O(n)
      */
-    public static char getFirstSingleChar(String str) {
+    public static int getFirstSingleChar(String str) {
         if (str == null || str.length() == 0) {
-            throw new RuntimeException("illegal input!");
+            return -1;
         }
 
         int[] bool = new int[str.length()];
@@ -37,9 +41,51 @@ public class FirstSingleCharInString {
                 }
             }
             if (bool[i] == 0) {
-                return str.charAt(i);
+                return i;
             }
         }
-        throw new RuntimeException("illegal input!");
+        return -1;
+    }
+
+
+
+    /**
+     * Create by yujing10 on 2020/10/6.
+     * 在一个字符串(0<=字符串长度<=10000，
+     * 全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置,
+     * 如果没有则返回 -1（需要区分大小写）.（从0开始计数）
+     *
+     * https://www.nowcoder.com/practice/1c82e8cf713b4bbeb2a5b31cf5b0417c?tpId=13&&tqId=11187&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+     */
+    public class TheFirstSingleCharacter {
+        public int FirstNotRepeatingChar(String str) {
+            if(str == null || str.length() == 0) {
+                return -1;
+            }
+            LinkedHashMap<Character, CharacterInfo> map = new LinkedHashMap<>();
+            for(int i=0;i<str.length();i++){
+                if(map.containsKey(str.charAt(i))){
+                    map.get(str.charAt(i)).count += 1;
+                } else {
+                    map.put(str.charAt(i), new CharacterInfo(i));
+                }
+            }
+            for(Map.Entry<Character, CharacterInfo> entry : map.entrySet()) {
+                if(entry.getValue().count == 1) {
+                    return entry.getValue().index;
+                }
+            }
+            return -1;
+        }
+    }
+
+    class CharacterInfo {
+        int index;
+        int count;
+
+        public CharacterInfo(int index){
+            this.index = index;
+            this.count = 1;
+        }
     }
 }
