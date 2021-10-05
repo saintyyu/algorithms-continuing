@@ -53,8 +53,8 @@ public class MaxSubSum {
         int[] tmp = Arrays.copyOfRange(array, 0, array.length);
         int max = tmp[0];
         int maxStart = 0;
-        int tmpStart = maxStart;
         int maxEnd = 0;
+        int tmpStart = 0;
         for (int i = 1; i < array.length; i++) {
             tmp[i] += Math.max(tmp[i - 1], 0);
             if (tmp[i - 1] < 0) {
