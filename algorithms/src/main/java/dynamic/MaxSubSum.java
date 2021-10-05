@@ -43,6 +43,7 @@ public class MaxSubSum {
 
     /**
      * 上面题目只是计算最大子串的和，这个题目需要将最大子串返回
+     * 思考：动态规划实际上还是分治法的一种
      * @param array
      * @return
      */
