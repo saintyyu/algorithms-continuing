@@ -53,6 +53,8 @@ public class SortBinaryTreeToLinkedList {
      * 实现：
      * 时间复杂度: O(n)
      * 空间复杂度：O(1)
+     *
+     * 缺点，该方法需要通过全局变量来实现
      */
     public BiTree convertTwo(BiTree pRootOfTree) {
         if (pRootOfTree==null)
