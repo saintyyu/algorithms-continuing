@@ -22,7 +22,9 @@ public class RebuildBinaryTreeWithPreAndMiddle {
         for (int i = 0; i< mid.length; i++) {
             if (mid[i] == pre[0]) {
                 root.left = reconstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(mid, 0, i));
-                root.right = reconstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(mid, i + 1, mid.length));
+                root.right = reconstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length),
+                        Arrays.copyOfRange(mid, i + 1, mid.length));
+                break;
             }
         }
         return root;

@@ -1,6 +1,4 @@
-package list;
-
-import bitree.BiTree;
+package linkedList;
 
 /**
  * @description:
