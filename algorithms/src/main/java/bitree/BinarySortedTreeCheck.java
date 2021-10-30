@@ -25,7 +25,7 @@ import java.util.LinkedList;
 public class BinarySortedTreeCheck {
 
     /**
-     * 思路一：采用先序遍历，则遍历的结果一定是有序的，所以对于遍历后的结果，如果不是有序的，那么就一定不是合法的二叉搜索树
+     * 思路一：采用中序遍历，则遍历的结果一定是有序的，所以对于遍历后的结果，如果不是有序的，那么就一定不是合法的二叉搜索树
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      * @param root
@@ -37,16 +37,14 @@ public class BinarySortedTreeCheck {
             return true;
         }
         LinkedList<Integer> list = new LinkedList<>();
-        preFirstTrace(list, root);
+        middleFirstTrace(list, root);
         Iterator<Integer> iterator = list.iterator();
-        int last = Integer.MIN_VALUE;
-        boolean first = true;
+        long last = Long.MIN_VALUE;
         while (iterator.hasNext()) {
             Integer tmp = iterator.next();
-            if (last >= tmp && !first) {
+            if (last >= tmp) {
                 return false;
             }
-            first = false;
             last = tmp;
         }
         return true;
@@ -54,7 +52,7 @@ public class BinarySortedTreeCheck {
 
 
     /**
-     * 思路二：思路一是将先序遍历和判断分开来进行，所以空间复杂度是O(n)，思路二是将两者合并起来：根据二叉搜索树的特点：root为左子树的最大值，右子树的最小值，
+     * 思路二：思路一是将中序遍历和判断分开来进行，所以空间复杂度是O(n)，思路二是将两者合并起来：根据二叉搜索树的特点：root为左子树的最大值，右子树的最小值，
      * 所以在递归的过程中，用两个值来记录即可。
      *
      * @param root
@@ -110,12 +108,12 @@ public class BinarySortedTreeCheck {
      * @param
      * @return
      */
-    public void preFirstTrace(LinkedList<Integer> list, BiTree root) {
+    public void middleFirstTrace(LinkedList<Integer> list, BiTree root) {
         if(root == null) {
             return;
         }
-        preFirstTrace(list, root.left);
+        middleFirstTrace(list, root.left);
         list.add(root.val);
-        preFirstTrace(list, root.right);
+        middleFirstTrace(list, root.right);
     }
 }
