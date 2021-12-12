@@ -88,8 +88,6 @@ public class FindMaxPointNumInTheSameLine {
      *
      */
     public static Point[] findPointsInTheSameLineWithMaxPointNum(Point[] points) {
-        if (points == null) {
-        }
         if (points == null || points.length <= 2) {
             return points;
         }

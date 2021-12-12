@@ -18,12 +18,12 @@ public class EightQueen {
         System.out.println(count);
     }
     public static void eightQueen(int n) {
-        check(0, 8, new int[n]);
+        check(0, n, new int[n]);
     }
 
     //array存储的index表示行号，value为列号
     public static void check(int m, int max, int[] array) {
-        if (m == max) {
+        if (m == max) {  //因为m从0开始，到m == max的时候，就已经judge了max次（行）了
             count++;
             return;
         }
