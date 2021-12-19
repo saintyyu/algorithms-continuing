@@ -27,3 +27,4 @@
 
 *.class
 /.idea/libraries/Maven__com_alibaba_fastjson_1_2_70.xml
+/.idea/uiDesigner.xml
